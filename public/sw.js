@@ -6,11 +6,7 @@ const SHELL_ASSETS = [
   '/',
   '/index.html',
   '/offline.html',
-  '/manifest.webmanifest',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png',
-  '/icons/maskable-192.png',
-  '/icons/maskable-512.png',
+  '/manifest.json',
   '/logo.png'
 ];
 
@@ -45,11 +41,6 @@ self.addEventListener('fetch', (event) => {
 
   if (req.destination === 'style' || req.destination === 'script' || req.url.endsWith('.css') || req.url.endsWith('.js')) {
     event.respondWith(staleWhileRevalidate(req));
-    return;
-  }
-
-  if (req.destination === 'image' || req.url.includes('/icons/')) {
-    event.respondWith(cacheFirst(req));
     return;
   }
 
@@ -88,6 +79,6 @@ async function cacheFirst(req) {
     cache.put(req, res.clone());
     return res;
   } catch {
-    return caches.match('/icons/icon-192.png') || Response.error();
+    return caches.match('/logo.png') || Response.error();
   }
 }
