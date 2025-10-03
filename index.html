@@ -1,13 +1,207 @@
 <!doctype html>
-<html lang="en">
+<html lang="es-MX">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#3747EC" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/src/index.css" />
+
+    <title>Bookify Pro</title>
+
+    <style>
+      :root {
+        --primary-blue: #3747ec;
+        --accent-yellow: #f5c065;
+        --soft-white: #fff;
+        --violet-bg: linear-gradient(135deg, #3747ec 0%, #6c51ff 100%);
+        --brand-gradient: linear-gradient(135deg, #3747ec 0%, #60a8f5 100%);
+        --section-bg: #f7f8fd;
+        --brand-dark: #232c5c;
+        --brand-accent: #d23d2d;
+      }
+      .splash {
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        background: var(--primary-blue);
+        color: #fff;
+        font-family:
+          'Poppins',
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        z-index: 9999;
+        transition: opacity 0.35s ease;
+      }
+      .splash__logo {
+        display: grid;
+        gap: 16px;
+        place-items: center;
+        text-align: center;
+      }
+      .splash__logo img {
+        width: 112px;
+        height: 112px;
+        border-radius: 22%;
+      }
+      .splash__title {
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        font-size: 1.5rem;
+      }
+      .splash.splash--hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+      .app-shell {
+        min-height: 100dvh;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        font-family:
+          'Poppins',
+          system-ui,
+          -apple-system,
+          Segoe UI,
+          Roboto,
+          Arial,
+          sans-serif;
+        background: #fff;
+      }
+      .app-header {
+        position: sticky;
+        top: 0;
+        background: #fff;
+        border-bottom: 1px solid #eceff7;
+        padding: 14px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--brand-dark);
+      }
+      .brand__badge {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: var(--primary-blue);
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+      .brand__text {
+        font-weight: 700;
+      }
+      .app-main {
+        padding: 24px;
+        background: var(--section-bg);
+      }
+      .app-footer {
+        padding: 16px 20px;
+        color: #59607a;
+        font-size: 0.9rem;
+        background: #fff;
+        border-top: 1px solid #eceff7;
+      }
+      .hero-skeleton {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 32px;
+        border-radius: 16px;
+        background: var(--brand-gradient);
+        color: #fff;
+      }
+      .hero-skeleton h1 {
+        margin: 0 0 8px;
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+      }
+      .hero-skeleton p {
+        margin: 0;
+        opacity: 0.92;
+      }
+    </style>
   </head>
+
   <body>
-    <div id="root"></div>
+    <div id="splash" class="splash" aria-label="Cargando Bookify Pro">
+      <div class="splash__logo">
+        <img src="/logo.png" alt="Logo Bookify Pro" />
+        <div class="splash__title">Bookify Pro</div>
+      </div>
+    </div>
+
+    <div id="root" class="app-shell">
+      <header class="app-header" role="banner">
+        <a href="/" class="brand" aria-label="Inicio Bookify Pro">
+          <span class="brand__badge">BP</span>
+          <span class="brand__text"
+            >Bookify<span style="color: var(--accent-yellow)">Pro</span></span
+          >
+        </a>
+        <nav aria-label="principal">
+          <a href="#features">Características</a> ·
+          <a href="#pricing">Precios</a> ·
+          <a href="#cta">Comenzar</a>
+        </nav>
+      </header>
+
+      <main class="app-main" role="main">
+        <section class="hero-skeleton">
+          <h1>Gestiona citas y pagos con estilo</h1>
+          <p>
+            Una landing veloz y lista para instalar como PWA. React hidrata
+            encima.
+          </p>
+        </section>
+      </main>
+
+      <footer class="app-footer" role="contentinfo">
+        © <span id="y">2025</span> Bookify Pro · Todos los derechos reservados
+      </footer>
+    </div>
+
     <script type="module" src="/src/main.tsx"></script>
+
+    <script>
+      window.__hideSplash = () => {
+        const s = document.getElementById('splash');
+        if (s) {
+          setTimeout(() => {
+            s.classList.add('splash--hide');
+          }, 3000);
+        }
+      };
+
+      document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
+
+    <noscript
+      >Esta app requiere JavaScript para la experiencia completa.</noscript
+    >
   </body>
 </html>

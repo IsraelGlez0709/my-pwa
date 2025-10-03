@@ -1,0 +1,46 @@
+{
+  "name": "Bookify Pro",
+  "short_name": "BookifyPro",
+  "description": "Landing de Bookify Pro, el SaaS para gestión de citas y pagos.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#3747EC",
+  "background_color": "#FFFFFF",
+  "orientation": "portrait",
+  "categories": ["business", "productivity"],
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver precios",
+      "short_name": "Precios",
+      "url": "/#pricing"
+    },
+    {
+      "name": "Características",
+      "short_name": "Features",
+      "url": "/#features"
+    },
+    {
+      "name": "Comenzar ahora",
+      "short_name": "Start",
+      "url": "/#cta"
+    }
+  ],
+  "lang": "es-MX",
+  "dir": "ltr",
+  "prefer_related_applications": false
+}
